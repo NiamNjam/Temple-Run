@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
     public float speed = 7.0f;
     private Rigidbody playerRigidbody;
     private CharacterController playerController;
+    public GameObject tile;
+    public int spawnSpeed;
 
     void Start()
     {
@@ -31,8 +33,14 @@ public class PlayerMove : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
-        //playerController.SimpleMove(new Vector3(0f, 0f, 0f));
+        
         movement = transform.TransformDirection(movement);
-        playerRigidbody.Move(movement * speed * Time.deltaTime);
+        playerRigidbody.velocity = movement * speed * Time.deltaTime;
+
+        if (true)
+        {
+            Vector3 spawning = new Vector3(0f, 0f, 0f);
+            gameObject.transform.position = spawning * spawnSpeed * Time.deltaTime;
+        }
     }
 }
