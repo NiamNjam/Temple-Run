@@ -5,22 +5,60 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private bool turnLeft, turnRight;
-    public float speed = 7.0f;
+    public float speed;
     //private Rigidbody playerRigidbody;
     private CharacterController myCharacter;
-    //public string verticalAxis;
-    //public string horizontalAxis;
-    // Start is called before the first frame update
+    public GameObject tile;
+    public GameObject tileEnd;
+    public Vector3 cooStraight;
+    public Vector3 cooLeft;
+    public Vector3 cooRight;
+    List<int> tilesList = new List<int>();
+    private List<GameObject> instantiatedTiles = new List<GameObject>();
+   
+
     void Start()
     {
-        //playerRigidbody = GetComponent<Rigidbody>();
-        //playerRigidbody.freezeRotation = true;
+
         myCharacter = GetComponent<CharacterController>();
+        GameObject instantiatedTile = Instantiate(tile, new Vector3(2f,0,0), Quaternion.identity);
+        tileEnd = instantiatedTile.gameObject.transform.GetChild(0).gameObject;
+        Vector3 tilePosition = tileEnd.transform.position;
+        Debug.Log("Position of the instantiated tile: " + tilePosition);
+        //int tileNr = Random.Range(0, 10);
+        //tilesList.Add(tileNr);
+        //int lastDigit = tilesList[tilesList.Count - 1] * 3;
+        //print(lastDigit);
+        /*
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(tile, i * cooStraight, Quaternion.identity);
+            GameObject newTile = Instantiate(tile, (i + 1) * cooStraight, Quaternion.identity);
+            instantiatedTiles.Add(newTile);
+
+        }
+        if (instantiatedTiles.Count > 0)
+        {
+            GameObject lastInstantiatedTile = instantiatedTiles[instantiatedTiles.Count - 1];
+            // Do something with the last instantiated tile, for example:
+            lastInstantiatedTile.GetComponent<Renderer>().material.color = Color.red;
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(tile, i * cooLeft, Quaternion.identity);
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(tile, i * cooRight, Quaternion.identity);
+        }
+        */
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         turnLeft = Input.GetKeyDown(KeyCode.A);
         turnRight = Input.GetKeyDown(KeyCode.D);
 
