@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -360,13 +361,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17671974, y: -0, z: -0, w: 0.9842613}
-  m_LocalPosition: {x: 0, y: 3.56, z: -4.98}
+  m_LocalRotation: {x: -0.04302858, y: -0.7963477, z: -0.018305665, w: -0.6030289}
+  m_LocalPosition: {x: -4.79, y: 3.11, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 20.358, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.303, y: -254.21, z: 5.2}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +381,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1468796514}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa4341fa0e4a4b48bdb0cb312356b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileToSpawn: {fileID: 6702608042030494269, guid: 4f7d713614556be4383e3dc915076b66, type: 3}
+  referenceObject: {fileID: 1524367019}
+  timeOffset: 0.4
+  distanceBetweenTiles: 5
+  randomValue: 0.8
 --- !u!1001 &1065407099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,7 +408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -402,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalRotation.x
@@ -410,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalRotation.z
@@ -422,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -510,11 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbfbd24fce1cc945914db9f63960dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  tile: {fileID: 6702608042030494269, guid: 4f7d713614556be4383e3dc915076b66, type: 3}
-  cooStraight: {x: 1, y: 0, z: 1}
-  cooLeft: {x: 0, y: 0, z: 0}
-  cooRight: {x: 0, y: 0, z: 0}
+  speed: 7
 --- !u!4 &1468796514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c086ccc23c2b2374697bacef1b456c24, type: 3}
@@ -546,6 +560,11 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1524367019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6702608042030494269, guid: 4f7d713614556be4383e3dc915076b66, type: 3}
+  m_PrefabInstance: {fileID: 630704956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
