@@ -9,22 +9,26 @@ public class PlayerMove : MonoBehaviour
     //private Rigidbody playerRigidbody;
     private CharacterController myCharacter;
     public GameObject tile;
-    public GameObject tileEnd;
+    //public GameObject tileStart;
     public Vector3 cooStraight;
     public Vector3 cooLeft;
     public Vector3 cooRight;
     List<int> tilesList = new List<int>();
     private List<GameObject> instantiatedTiles = new List<GameObject>();
-   
+    private const float minDistance = 0.2f;
+
 
     void Start()
     {
 
         myCharacter = GetComponent<CharacterController>();
-        GameObject instantiatedTile = Instantiate(tile, new Vector3(2f,0,0), Quaternion.identity);
-        tileEnd = instantiatedTile.gameObject.transform.GetChild(0).gameObject;
-        Vector3 tilePosition = tileEnd.transform.position;
+        GameObject instantiatedTile = Instantiate(tile, new Vector3(3f,0,0), Quaternion.identity);
+        GameObject tileStart = instantiatedTile.transform.GetChild(1).gameObject;
+        Vector3 tilePosition = tileStart.transform.position;
         Debug.Log("Position of the instantiated tile: " + tilePosition);
+        GameObject instantiatedTile1 = Instantiate(tile, tileStart.transform.position, Quaternion.identity);
+        //GameObject tileStart1 = instantiatedTile1.transform.GetChild(0).gameObject;
+        //tileStart.transform.position = tileStart1.transform.position;
         //int tileNr = Random.Range(0, 10);
         //tilesList.Add(tileNr);
         //int lastDigit = tilesList[tilesList.Count - 1] * 3;
