@@ -52,5 +52,15 @@ public class PlayerMove : MonoBehaviour
         myCharacter.SimpleMove(new Vector3(0f, 0f, 0f));
         myCharacter.Move(transform.forward * speed * Time.deltaTime);
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("You died");
+            Destroy(this);
+
+        }
+    }
+
 }
