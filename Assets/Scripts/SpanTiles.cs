@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpanTiles : MonoBehaviour
 {
-
+    public GameObject player;
     public GameObject tileToSpawn;
     public GameObject referenceObject;
     public GameObject badTile;
-    public float distanceBetweenTiles = 2.0F;
+    public float distanceBetweenTiles = 2.5F;
     public float randomValue = 0.9f;
     private Vector3 previousTilePosition;
     private Vector3 direction;
@@ -41,7 +41,7 @@ public class SpanTiles : MonoBehaviour
             otherDirection = temp;
 
         }
-        Vector3 spawnPos = previousTilePosition + distanceBetweenTiles * direction;
+        Vector3 spawnPos = previousTilePosition + 4F * direction;
         Instantiate(tileToSpawn, spawnPos, Quaternion.Euler(0, 0, 0));
         previousTilePosition = spawnPos;
 
@@ -64,12 +64,21 @@ public class SpanTiles : MonoBehaviour
             otherDirection = temp;
 
         }
-        Vector3 spawnPos = previousTilePosition + distanceBetweenTiles * direction;
+        Vector3 spawnPos = previousTilePosition + 4F * direction;
         Instantiate(badTile, spawnPos, Quaternion.Euler(0, 0, 0));
         previousTilePosition = spawnPos;
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("You died");
+            Destroy(player);
+
+        }
+    }
+
 
 
 }

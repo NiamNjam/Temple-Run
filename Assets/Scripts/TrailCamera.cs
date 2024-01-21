@@ -6,7 +6,7 @@ public class TrailCamera : MonoBehaviour
 {
     public Transform target;
     float trailDistance = 5.0f;
-    float heightOffset = 3.0f;
+    float heightOffset = 2.5f;
     float cameraDelay = 0.02f;
     // Start is called before the first frame update
     void Start()

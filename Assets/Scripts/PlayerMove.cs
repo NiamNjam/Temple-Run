@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     //private Rigidbody playerRigidbody;
     private CharacterController myCharacter;
     private Animator ani;
+    public AudioClip clipRun;
+    public AudioSource sourceRun;
     //public GameObject tileStart;
     //GameObject instantiatedTile1;
     //public Vector3 cooStraight;
@@ -24,7 +26,8 @@ public class PlayerMove : MonoBehaviour
 
         myCharacter = GetComponent<CharacterController>();
         ani = GetComponent<Animator>();
-
+        sourceRun.clip = clipRun;
+        sourceRun.Play();
 
 
     }
@@ -68,16 +71,11 @@ public class PlayerMove : MonoBehaviour
         //movement = transform.TransformDirection(movement); // Convert local to global space
         myCharacter.SimpleMove(new Vector3(0f, 0f, 0f));
         myCharacter.Move(transform.forward * speed * Time.deltaTime);
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("You died");
-            Destroy(this);
+    
 
-        }
-    }
+    
 
 }
