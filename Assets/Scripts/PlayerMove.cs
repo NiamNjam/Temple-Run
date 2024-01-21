@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float speed;
     //private Rigidbody playerRigidbody;
     private CharacterController myCharacter;
-
+    private Animator ani;
     //public GameObject tileStart;
     //GameObject instantiatedTile1;
     //public Vector3 cooStraight;
@@ -23,9 +23,9 @@ public class PlayerMove : MonoBehaviour
     {
 
         myCharacter = GetComponent<CharacterController>();
+        ani = GetComponent<Animator>();
 
 
-        
 
     }
 
@@ -38,11 +38,28 @@ public class PlayerMove : MonoBehaviour
 
         turnLeft = Input.GetKeyDown(KeyCode.A);
         turnRight = Input.GetKeyDown(KeyCode.D);
+        //int jump = Animator.StringToHash("Jumping");
 
         if (turnLeft)
             myCharacter.transform.Rotate(new Vector3(0f, -90f, 0f));
         else if (turnRight)
             myCharacter.transform.Rotate(new Vector3(0f, 90f, 0f));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ani.SetBool("IsMoving", true);
+            //ani.SetTrigger("Jumping");
+            myCharacter.GetComponent<Animator>().Play("Running Jump 1");
+            
+        }
+        else
+        {
+            ani.SetBool("IsMoving", false);
+            
+        }
+
+
+
 
         //float horizontalInput = Input.GetAxis("Horizontal");
         //float verticalInput = Input.GetAxis("Vertical");
