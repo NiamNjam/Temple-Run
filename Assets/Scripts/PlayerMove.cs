@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMove : MonoBehaviour
 {
@@ -79,13 +81,14 @@ public class PlayerMove : MonoBehaviour
     {
         if (hit.collider.CompareTag("Enemy"))
         {
-            Debug.Log("Collision with enemy detected");
+            //Debug.Log("Collision with enemy detected");
             // Destroy the current GameObject
             Destroy(gameObject);
+            SceneManager.LoadScene("End");
         }
         else
         {
-            Debug.Log("Collision with non-enemy object detected");
+            //Debug.Log("Collision with non-enemy object detected");
         }
 
     }

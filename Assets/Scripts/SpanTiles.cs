@@ -28,7 +28,7 @@ public class SpanTiles : MonoBehaviour
     void Road()
     {
         Vector3 mainDirection = new Vector3(0, 0, 1);
-        Vector3 otherDirection = new Vector3(-1, 0, 0);
+        Vector3 otherDirection = new Vector3(1, 0, 0);
         
         if (Random.value < randomValue)
         {
@@ -52,7 +52,7 @@ public class SpanTiles : MonoBehaviour
     void Danger() 
     {
         Vector3 mainDirection = new Vector3(0, 0, 1);
-        Vector3 otherDirection = new Vector3(-1, 0, 0);
+        Vector3 otherDirection = new Vector3(1, 0, 0);
 
         if (Random.value < randomValue)
         {
