@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     private Animator ani;
     public AudioClip clipRun;
     public AudioSource sourceRun;
+    public bool ConstrainVelocityToGroundPlane;
+    public GameObject tile;
     //public GameObject tileStart;
     //GameObject instantiatedTile1;
     //public Vector3 cooStraight;
@@ -51,7 +53,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ani.SetBool("IsMoving", true);
-            //ani.SetTrigger("Jumping");
             myCharacter.GetComponent<Animator>().Play("Running Jump 1");
             
         }
@@ -74,8 +75,22 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-    
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Enemy"))
+        {
+            Debug.Log("Collision with enemy detected");
+            // Destroy the current GameObject
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Collision with non-enemy object detected");
+        }
 
-    
+    }
+
+
+
 
 }
